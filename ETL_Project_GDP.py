@@ -10,9 +10,7 @@ from datetime import datetime
 
 
 def extract(url, table_attribs):
-    ''' This function extracts the required
-    information from the website and saves it to a dataframe. The
-    function returns the dataframe for further processing. '''
+    ''' This function extracts the required information from the website and saves it to a dataframe. The function returns the dataframe for further processing. '''
 
     page = requests.get(url).text
     data = BeautifulSoup(page,'html.parser')
@@ -35,10 +33,7 @@ def extract(url, table_attribs):
     return df
 
 def transform(df):
-    ''' This function converts the GDP information from Currency
-    format to float value, transforms the information of GDP from
-    USD (Millions) to USD (Billions) rounding to 2 decimal places.
-    The function returns the transformed dataframe.'''
+    ''' This function converts the GDP information from Currency format to float value, transforms the information of GDP from USD (Millions) to USD (Billions) rounding to 2 decimal places. The function returns the transformed dataframe.'''
 
     GDP_list = df["GDP_USD_millions"].tolist()
     GDP_list = [float("".join(x.split(','))) for x in GDP_list]
